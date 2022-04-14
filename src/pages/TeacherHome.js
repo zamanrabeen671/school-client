@@ -20,12 +20,12 @@ export default function TeacherHome() {
                 </div>
                 <div>
                     <Link to="/teacher/course" className='btn btn-primary py-2'>Add More Course</Link>
-                    <h4>Letest Courses</h4>
+                    <h4>Your Courses</h4>
                     <Courses />
                 </div>
                 <div className='border-top border-secondary py-2'>
                     <Link to="/teacher/mcq" className='btn btn-primary py-2'>Create a MCQ Question</Link>
-                    <h4 className='my-3'>Current MCQ Test</h4>
+                    <h4 className='my-3'>Your MCQ Question</h4>
                     <MCQTest />
                 </div>
             </div>

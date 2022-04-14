@@ -16,7 +16,7 @@ export default function CreateCourse() {
       instructor: state.auth.id
     }
     const reply = await createCourse(token, config)
-    if (reply.status === 'ok') {
+    if (reply.status === 'success') {
       setMessageShow(true)
       setMessage(reply.message)
       setTimeout(() => {

@@ -7,6 +7,7 @@ import { DataContext } from '../Context/GlobalState';
 export default function Courses() {
   const [courseData, setCourseData] = useState([]);
   const [state] = useContext(DataContext);
+  const [message, setMessage] = useState('');
   const [loader, setLoader] = useState(true);
   const token = sessionStorage.getItem('token');
   const getData = async () => {
@@ -26,7 +27,12 @@ export default function Courses() {
       courseId: id
     }
     const response = await enrollMent(token, config);
-    console.log(response)
+    if(response.status === 'success') {
+      setMessage('You are successfully enrolled')
+      setTimeout(() => {
+        setMessage('')
+      },1500)
+    }
   }
   return (
     <div>
@@ -38,6 +44,7 @@ export default function Courses() {
         </div>
         :
         <div className='row'>
+          <p className='text-center text-info'>{message}</p>
           {
             courseData.map((item, index) => {
               return (

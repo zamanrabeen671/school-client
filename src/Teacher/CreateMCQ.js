@@ -8,7 +8,7 @@ let quizs = [];
 export default function CreateMCQ() {
   const { register, handleSubmit, reset } = useForm();
   const [state] = useContext(DataContext)
-  const [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(5)
   const [questionShow, setQuestionShow] = useState(false)
   const [questionArr, setQuestionArr] = useState([])
   const [questionHeader, setQuestioinHeader] = useState({})
@@ -20,29 +20,16 @@ export default function CreateMCQ() {
     }
     setQuestioinHeader(newObj)
     setQuestionShow(true)
-    // if (quizs.length >= 5) {
-    //   setCounter(5);
-    //   const config = {
-    //     examName: data.examName,
-    //     expirationDate: data.expirationDate,
-    //     author: state.auth?.id,
-    //     status: 'new',
-    //     question: quizs
-    //   }
-    //   const response = await createMCQQuestion(config)
-    //   if(response) quizs = [];
-    // }
-    // const newResponse = await createMCQQuestion(newObj)
   }
   return (
     <div className='container'>
       <div className='text-center py-3'>
         <h2>Create MCQ Question Exam</h2>
-        <h6>You can create only 5 MCQ Question</h6>
+        <h6>You can create only {counter} MCQ Question</h6>
       </div>
       {
         questionShow ?
-          <CreateMCQBody questionHeader={questionHeader} />
+          <CreateMCQBody questionHeader={questionHeader} setCounter={setCounter} counter={counter} />
           :
 
           <form onSubmit={handleSubmit(onSubmit)} className='bg-light py-5 px-3 shadow-sm rounded'>
